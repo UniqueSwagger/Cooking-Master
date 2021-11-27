@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hungry monster</title>
+    <!-- bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    @media only screen and (max-width: 688px) {
+      .mobile {
+        width: 60% !important;
+      }
+      .form {
+        width: 70% !important;
+      }
+    }
+  </style>
+  <body>
+    <!-- navbar start -->
+    <header>
+      <nav class="navbar pt-0 fw-bold navbar-expand-lg navbar-dark">
+        <div class="container px-4 py-2 bg-dark">
+          <a class="navbar-brand" href="#">Cooking master</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul
+              class="
+                navbar-nav
+                d-flex
+                align-items-center
+                ms-auto
+                mb-2 mb-lg-0
+                me-2
+              "
+            >
+              <li class="nav-item me-2">
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item me-2">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item me-2">
+                <a class="nav-link" href="#">Recipes</a>
+              </li>
+              <li
+                class="text-white me-2 d-flex align-items-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-basket"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"
+                  />
+                </svg>
+                <span class="ms-2 fst-italic" id="cart-count">0</span>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog text-black">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Platter
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <!-- here all selected product goes -->
+                      <div class="modal-body" id="cart-products"></div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Confirm order
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- navbar end  -->
+
+    <main>
+      <!-- search section start-->
+      <section>
+        <form class="d-flex form w-50 my-5 mx-auto">
+          <input
+            id="search-field"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search the food you want"
+            aria-label="Search"
+          />
+          <button id="search-btn" class="btn btn-outline-primary" type="submit">
+            Search
+          </button>
+        </form>
+      </section>
+      <!-- search section end-->
+      <section>
+        <div id="meal"></div>
+        <div
+          id="meals"
+          class="row row-cols-1 row-cols-xl-4 row-cols-md-3 gy-5 m-5"
+        ></div>
+      </section>
+    </main>
+    <!-- custom js  -->
+    <script src="app.js"></script>
+    <!-- bootstrap js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
